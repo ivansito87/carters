@@ -1,10 +1,18 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import './menu-item.scss';
 
-const MenuItem = ({ title, imageUrl, size }) => (
-  <div className={`${size} menu-item`}>
+// In this case the match and history props are part of the props object and are
+// passed ewith every prop any time we need to find this
+const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
+  <div
+    className={`${size} menu-item`}
+    onClick={() => {
+      console.log(match);
+      history.push(`${match.path}${linkUrl}`);
+    }}
+  >
     <div
       className="background-image"
       style={{
@@ -24,4 +32,4 @@ MenuItem.propTypes = {
   size: PropTypes.string.isRequired,
 };
 
-export default MenuItem;
+export default withRouter(MenuItem);
