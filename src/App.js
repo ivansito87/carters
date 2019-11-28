@@ -15,8 +15,12 @@ function App() {
   return (
     <div>
       <Switch>
+        {/*
+            Prop Tuneling we have access to hystory and match here
+            since is pased from the route compnent
+        */}
         <Route exact path="/" component={HomePage} />
-        <Route path="shop/hats" component={HatsPage} />
+        <Route path="/hats" component={HatsPage} />
       </Switch>
     </div>
   );
